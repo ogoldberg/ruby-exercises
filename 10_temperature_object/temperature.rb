@@ -24,22 +24,23 @@ class Temperature
     @c ? @c : ((@f-32)*5)/9
   end
 
-  # def in_fahrenheit(temp)
-  #   if temp = @f
-  #     return @f
-  #   elsif temp = @c
-  #     return temp * 1.8 + 32
-  #   end
-  # end  
-    
-
-  # end
-
-
   def self.from_celsius(temp)
-    @c = temp
-    in_celsius     
+    Temperature.new(:c => temp)    
   end
 
-    
+  def self.from_fahrenheit(temp)
+    Temperature.new(:f => temp)
+  end    
+end
+
+class Celsius < Temperature
+  def initialize(temp)
+    @c = temp
+  end
+end
+
+class Fahrenheit < Temperature
+  def initialize(temp)
+    @f = temp
+  end
 end
